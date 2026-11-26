@@ -47,8 +47,10 @@ function renderCollection() {
                         </span>
                     </div>
 
-                    <div class="border border-hairline bg-subtle p-5 flex items-center justify-center overflow-hidden">
-                        ${item.svg}
+                    <div class="border border-hairline bg-subtle overflow-hidden">
+                        ${item.image
+                            ? `<img src="${item.image}" alt="${item.title}" loading="lazy" class="w-full h-auto object-cover" onerror="this.remove()">`
+                            : (item.svg || '')}
                     </div>
 
                     <div class="space-y-2.5">
