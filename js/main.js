@@ -1,5 +1,5 @@
 // ==========================================================================
-// INIȚIALIZARE EVENIMENTE LA ÎNCĂRCAREA PAGINII
+// INITIALIZE EVENTS WHEN THE PAGE LOADS
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
     loadPreferences();
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCollection();
     initScrollReveal();
 
-    // Sunete discrete la hover pe cardul principal și link-uri de lansare
+    // Subtle sounds on hover over the featured card and launch links
     const featuredCard = document.querySelector('#featuredWrapper .editorial-card');
     if (featuredCard) {
         featuredCard.addEventListener('mouseenter', () => CalmAudio.playSoftHover());
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', () => CalmAudio.playOpenChord());
     });
 
-    // Buton Rapid Sunet în Header
+    // Quick sound button in the header
     document.getElementById('navSoundBtn').addEventListener('click', () => {
         prefs.soundEnabled = !prefs.soundEnabled;
         applyPreferences();
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Deschidere / Închidere Panou Setări
+    // Open / close the settings panel
     document.getElementById('openSettingsBtn').addEventListener('click', () => {
         CalmAudio.playSoftClick(1.05);
         toggleSettingsDrawer(true);
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Comutare Temă (Luminos / Întunecat)
+    // Toggle theme (light / dark)
     document.querySelectorAll('.theme-opt-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const nextTheme = btn.dataset.themeOpt;
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Dimensiune Font
+    // Font size
     document.querySelectorAll('.font-opt-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             prefs.fontScale = btn.dataset.scale;
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Comutare Sunet Interfață
+    // Comutare Interface Sound
     document.querySelectorAll('.sound-opt-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             prefs.soundEnabled = btn.dataset.soundOpt === 'true';
@@ -91,14 +91,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Slider Volum
+    // Volume slidere
     document.getElementById('volumeSlider').addEventListener('input', (e) => {
         prefs.soundVolume = Number(e.target.value);
         applyPreferences();
         savePreferences();
     });
 
-    // Comutator Ambianță Calmă
+    // Toggle calm ambience
     document.getElementById('ambientToggleBtn').addEventListener('click', () => {
         if (!prefs.soundEnabled) {
             prefs.soundEnabled = true;
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         CalmAudio.playSoftClick(prefs.ambientEnabled ? 1.15 : 0.9);
     });
 
-    // Selector Preset Sunet Ambiental
+    // Ambient sound preset selector
     document.querySelectorAll('.ambient-preset-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             prefs.ambientPreset = btn.dataset.ambientPreset;
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Resetare Setări
+    // Reset settings
     document.getElementById('resetSettingsBtn').addEventListener('click', () => {
         prefs = { ...defaultPrefs };
         applyPreferences();
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         CalmAudio.playSoftClick(0.95);
     });
 
-    // Filtrare Categorii
+    // Category filtering
     document.querySelectorAll('.cat-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             selectedCategory = btn.dataset.cat;
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Căutare
+    // Search
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', (e) => {
         queryText = e.target.value;
@@ -161,11 +161,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('resetSearchBtn').addEventListener('click', () => {
         queryText = '';
         searchInput.value = '';
-        selectedCategory = 'Toate';
-        document.querySelector('.cat-btn[data-cat="Toate"]').click();
+        selectedCategory = 'All';
+        document.querySelector('.cat-btn[data-cat="All"]').click();
     });
 
-    // Modal Detalii
+    // Details modal
     document.getElementById('closeDetailModal').addEventListener('click', () => {
         CalmAudio.playSoftClick(0.92);
         closeDetailModal();
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Tasta Escape închide panourile
+    // Escape key closes panels
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             toggleSettingsDrawer(false);

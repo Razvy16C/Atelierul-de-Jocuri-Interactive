@@ -1,5 +1,5 @@
 // ==========================================================================
-// GESTIONARE PREFERINȚE (TEMĂ, ACCENT, FONT, SUNET)
+// PREFERENCES (THEME, ACCENT, FONT, SOUND)
 // ==========================================================================
 function loadPreferences() {
     try {
@@ -36,7 +36,7 @@ function applyPreferences() {
 }
 
 function syncDrawerUI() {
-    // Buton Sunet din Header
+    // Header sound button
     const navIconOn = document.getElementById('navSoundIconOn');
     const navIconOff = document.getElementById('navSoundIconOff');
     const navSoundText = document.getElementById('navSoundText');
@@ -45,10 +45,10 @@ function syncDrawerUI() {
         navIconOff.classList.toggle('hidden', prefs.soundEnabled);
     }
     if (navSoundText) {
-        navSoundText.textContent = prefs.soundEnabled ? 'Sunet' : 'Mut';
+        navSoundText.textContent = prefs.soundEnabled ? 'Sound' : 'Muted';
     }
 
-    // Temă
+    // Theme
     document.querySelectorAll('.theme-opt-btn').forEach(btn => {
         const active = btn.dataset.themeOpt === prefs.theme;
         btn.classList.toggle('bg-subtle', active);
@@ -57,7 +57,7 @@ function syncDrawerUI() {
         btn.classList.toggle('text-muted', !active);
     });
 
-    // Accente
+    // Accents
     const accent = mutedAccents[prefs.accentIdx] || mutedAccents[0];
     const accentLabel = document.getElementById('accentLabel');
     if (accentLabel) accentLabel.textContent = accent.name;
@@ -82,10 +82,10 @@ function syncDrawerUI() {
         btn.classList.toggle('text-muted', !active);
     });
 
-    // Sunet
+    // Sound
     const soundStatusLabel = document.getElementById('soundStatusLabel');
     if (soundStatusLabel) {
-        soundStatusLabel.textContent = prefs.soundEnabled ? 'Pornit' : 'Oprit';
+        soundStatusLabel.textContent = prefs.soundEnabled ? 'On' : 'Off';
     }
 
     document.querySelectorAll('.sound-opt-btn').forEach(btn => {
@@ -101,7 +101,7 @@ function syncDrawerUI() {
     if (volumeSlider) volumeSlider.value = prefs.soundVolume;
     if (volumeLabel) volumeLabel.textContent = `${prefs.soundVolume}%`;
 
-    // Ambianță
+    // Ambience
     const ambientBtn = document.getElementById('ambientToggleBtn');
     const ambientKnob = document.getElementById('ambientToggleKnob');
     const ambientPresetLabel = document.getElementById('ambientPresetLabel');
@@ -115,8 +115,8 @@ function syncDrawerUI() {
         ambientKnob.classList.toggle('bg-muted', !isOn);
         if (ambientPresetLabel) {
             ambientPresetLabel.textContent = isOn
-                ? `Activ: ${ambientPresetNames[prefs.ambientPreset] || 'Briză & Acord'}`
-                : 'Fond sonor generativ pentru concentrare';
+                ? `Active: ${ambientPresetNames[prefs.ambientPreset] || 'Breeze & Chord'}`
+                : 'Generative background audio for focus';
         }
     }
 

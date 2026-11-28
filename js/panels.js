@@ -1,5 +1,5 @@
 // ==========================================================================
-// CONTROALE PANOURI (DRAWER SETĂRI & MODAL DETALII)
+// PANEL CONTROLS (SETTINGS DRAWER & DETAILS MODAL)
 // ==========================================================================
 function toggleSettingsDrawer(open) {
     const drawer = document.getElementById('settingsDrawer');

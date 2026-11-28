@@ -1,5 +1,5 @@
 // ==========================================================================
-// MOTOR AUDIO SINTETIZAT ÎN TIMP REAL (WEB AUDIO API — FĂRĂ FIȘIERE EXTERNE)
+// REAL-TIME SYNTHESIZED AUDIO ENGINE (WEB AUDIO API — NO EXTERNAL FILES)
 // ==========================================================================
 const CalmAudio = (() => {
     let ctx = null;
@@ -48,7 +48,7 @@ const CalmAudio = (() => {
         }
     }
 
-    // 1. Clic moale la interacțiuni UI
+    // 1. Soft click for UI interactions
     function playSoftClick(pitchScale = 1) {
         if (!prefs.soundEnabled) return;
         const audioCtx = ensureContext();
@@ -78,7 +78,7 @@ const CalmAudio = (() => {
         osc.stop(now + 0.085);
     }
 
-    // 2. Atingere discretă la hover pe carduri și butoane
+    // 2. Subtle hover tone for cards and buttons
     function playSoftHover() {
         if (!prefs.soundEnabled) return;
         const nowMs = performance.now();
@@ -109,7 +109,7 @@ const CalmAudio = (() => {
         osc.stop(now + 0.15);
     }
 
-    // 3. Tranziție melodică la schimbarea temei (luminos / întunecat)
+    // 3. Melodic transition when changing the theme (light / dark)
     function playThemeShift(isDark) {
         if (!prefs.soundEnabled) return;
         const audioCtx = ensureContext();
@@ -138,7 +138,7 @@ const CalmAudio = (() => {
         });
     }
 
-    // 4. Acord ascendent la deschiderea unei experiențe
+    // 4. Ascending chord when opening an experience
     function playOpenChord() {
         if (!prefs.soundEnabled) return;
         const audioCtx = ensureContext();
@@ -167,7 +167,7 @@ const CalmAudio = (() => {
         });
     }
 
-    // 5. Ambianță calmă cu 4 peisaje sonore selectabile
+    // 5. Calm ambience cu 4 peisaje sonore selectabile
     function stopAmbient() {
         if (!ambientNodes) return;
         const { nodes, gainNode } = ambientNodes;
@@ -202,7 +202,7 @@ const CalmAudio = (() => {
         const nodes = [ambGain];
 
         if (preset === 'rain') {
-            // Ploaie fină: zgomot roz filtrat blând
+            // Soft rain: gently filtered pink noise
             const noise = audioCtx.createBufferSource();
             noise.buffer = createPinkNoiseBuffer(audioCtx, 5);
             noise.loop = true;
@@ -223,7 +223,7 @@ const CalmAudio = (() => {
             ambGain.gain.linearRampToValueAtTime(0.28, now + 1.4);
             nodes.push(noise, lowpass, highpass);
         } else if (preset === 'waves') {
-            // Valuri liniștite: zgomot roz modulat lent de un LFO
+            // Gentle waves: pink noise slowly modulated by an LFO
             const noise = audioCtx.createBufferSource();
             noise.buffer = createPinkNoiseBuffer(audioCtx, 6);
             noise.loop = true;
@@ -237,7 +237,7 @@ const CalmAudio = (() => {
 
             const lfo = audioCtx.createOscillator();
             lfo.type = 'sine';
-            lfo.frequency.setValueAtTime(0.11, now); // un val la ~9 secunde
+            lfo.frequency.setValueAtTime(0.11, now); // one wave every ~9 seconds
 
             const lfoDepth = audioCtx.createGain();
             lfoDepth.gain.setValueAtTime(0.14, now);
@@ -254,7 +254,7 @@ const CalmAudio = (() => {
             ambGain.gain.linearRampToValueAtTime(0.32, now + 1.5);
             nodes.push(noise, filter, waveGain, lfo, lfoDepth);
         } else if (preset === 'nocturne') {
-            // Nocturnă caldă: acord profund în Re major9 (D3, A3, E4, F#4)
+            // Warm nocturne: deep D major 9 chord (D3, A3, E4, F#4)
             const freqs = [146.83, 220.00, 329.63, 369.99];
             freqs.forEach((f, idx) => {
                 const osc = audioCtx.createOscillator();
@@ -270,7 +270,7 @@ const CalmAudio = (() => {
             });
             ambGain.gain.linearRampToValueAtTime(0.35, now + 1.8);
         } else {
-            // Implicit ('breeze'): Briză fină & Acord cald în La minor9 (A2, E3, B3, C5)
+            // Default ('breeze'): gentle breeze & warm A minor 9 chord (A2, E3, B3, C5)
             const freqs = [110.00, 164.81, 246.94, 523.25];
             freqs.forEach((f, idx) => {
                 const osc = audioCtx.createOscillator();

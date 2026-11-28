@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SISTEM DE DESIGN & VARIABILE CROMATICE (PALETĂ CALMĂ, EDITORIALĂ)
+   DESIGN SYSTEM & COLOR VARIABLES (CALM EDITORIAL PALETTE)
    ========================================================================== */
 :root {
     --bg-primary: #FAFAF8;
@@ -10,7 +10,7 @@
     --text-muted: #848884;
     --border-hairline: #E2E4E1;
 
-    /* Verde închis desaturat ca accent principal */
+    /* Muted dark green as the primary accent */
     --accent: #3A5245;
     --accent-hover: #2C3F35;
     --accent-tint: rgba(58, 82, 69, 0.08);
@@ -28,7 +28,7 @@
     --text-muted: #727772;
     --border-hairline: #262826;
 
-    /* Verde salvie-pin stins pentru contrast echilibrat pe fundal închis */
+    /* Muted sage-pine green for balanced contrast on a dark background */
     --accent: #688574;
     --accent-hover: #7B9987;
     --accent-tint: rgba(104, 133, 116, 0.12);
@@ -63,10 +63,10 @@ body {
 .border-accent { border-color: var(--accent); }
 
 /* ==========================================================================
-   ANIMAȚII LENTE, PASIVE ȘI LINIȘTITOARE
+   SLOW, SUBTLE, CALMING ANIMATIONS
    ========================================================================== */
 
-/* Apariție lină la scroll */
+/* Smooth reveal on scroll */
 .reveal-on-scroll {
     opacity: 0;
     transform: translateY(20px);
@@ -79,7 +79,7 @@ body {
     transform: translateY(0);
 }
 
-/* Card editorial cu tranziție lentă */
+/* Editorial card with a slow transition */
 .editorial-card {
     background-color: var(--bg-surface);
     border: 1px solid var(--border-hairline);
@@ -104,7 +104,7 @@ body {
     opacity: 1;
 }
 
-/* Butoane rafinate cu tranziție lentă */
+/* Refined buttons with a slow transition */
 .btn-calm {
     position: relative;
     overflow: hidden;
@@ -142,7 +142,7 @@ body {
     background-color: var(--accent-tint);
 }
 
-/* Linie subțire animată la hover pe link-uri */
+/* Thin animated underline on link hover */
 .underline-slow {
     position: relative;
     display: inline-flex;
@@ -168,7 +168,7 @@ body {
     transform-origin: left center;
 }
 
-/* Animație respirată foarte lentă pentru elementul geometric din Hero */
+/* Very slow breathing animation for the geometric hero element */
 @keyframes breatheSlow {
     0%, 100% { transform: rotate(0deg) scale(1); }
     50% { transform: rotate(3deg) scale(1.015); }
@@ -178,7 +178,7 @@ body {
     animation: breatheSlow 14s ease-in-out infinite;
 }
 
-/* Panou Setări Slide-over */
+/* Slide-over settings panel */
 .drawer-backdrop {
     opacity: 0;
     pointer-events: none;
@@ -196,11 +196,11 @@ body {
     transform: translateX(0);
 }
 
-/* Ascunde scrollbar-ul orizontal pe filtre păstrând funcționalitatea */
+/* Hide the horizontal filter scrollbar while keeping it functional */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* Stil minimalist pentru slider-ul de volum */
+/* Minimal styling for the volume slider */
 input[type="range"].calm-slider {
     -webkit-appearance: none;
     appearance: none;

@@ -1,30 +1,30 @@
-# Atelier de RazvyDev
+# RazvyDev Atelier
 
-Jocuri și experiențe interactive.
+Interactive games and experiences.
 
-## Structură
+## Structure
 
-    index.html              pagina
-    css/styles.css          culori, teme, animații
-    js/tailwind-config.js   configurarea Tailwind
-    js/data.js              lista de experiențe, accente, preferințe implicite
-    js/audio.js             sunetele (Web Audio)
-    js/preferences.js       temă, accent, font, sunet
-    js/collection.js        cardurile, filtrarea
-    js/panels.js            panoul de setări, fereastra de detalii
-    js/main.js              evenimentele de pornire
+    index.html              page
+    css/styles.css          colors, themes, animations
+    js/tailwind-config.js   Tailwind configuration
+    js/data.js              experience list, accents, default preferences
+    js/audio.js             sounds (Web Audio)
+    js/preferences.js       theme, accent, font, sound
+    js/collection.js        cards, filtering
+    js/panels.js            settings panel, details modal
+    js/main.js              startup events
 
-Ordinea scripturilor din `index.html` contează: nu o schimba.
+The script order in `index.html` matters; do not change it.
 
-## Publicare pe GitHub Pages
+## Publish with GitHub Pages
 
-1. Creează un repository public pe GitHub.
-2. Apasă **Add file → Upload files** și trage conținutul acestui folder (`index.html` trebuie să fie în rădăcină), apoi **Commit changes**.
-3. Mergi la **Settings → Pages**.
-4. La **Source** alege **Deploy from a branch**, ramura `main`, folderul `/ (root)`, apoi **Save**.
-5. După un minut sau două, site-ul apare la `https://UTILIZATOR.github.io/NUME-REPO/`.
+1. Create a public repository on GitHub.
+2. Click **Add file → Upload files** and drag in the contents of this folder (`index.html` must be at the root), then click **Commit changes**.
+3. Go to **Settings → Pages**.
+4. Under **Source**, choose **Deploy from a branch**, select the `main` branch and `/ (root)` folder, then click **Save**.
+5. After a minute or two, the site will be available at `https://USERNAME.github.io/REPOSITORY-NAME/`.
 
-## Cum adaugi un joc
+## Add a game
 
-Adaugă un obiect nou în `secondaryExperiences` din `js/data.js`.
-Cardul principal (Atlas România) este scris direct în `index.html`.
+Add a new object to `secondaryExperiences` in `js/data.js`.
+The featured card (Atlas Romania) is written directly in `index.html`.

@@ -1,5 +1,5 @@
 // ==========================================================================
-// RANDARE COLECȚIE & FILTRARE
+// COLLECTION RENDERING & FILTERING
 // ==========================================================================
 function renderCollection() {
     const featuredWrapper = document.getElementById('featuredWrapper');
@@ -7,24 +7,22 @@ function renderCollection() {
     const emptyState = document.getElementById('emptyState');
     const q = queryText.trim().toLowerCase();
 
-    // Verifică potrivirea pentru cardul principal (01 - Atlas România)
-    const atlasMatchesCat = selectedCategory === 'Toate' || selectedCategory === 'Geografie & Explorare';
+    // Check whether the featured card (01 — Atlas Romania) matches
+    const atlasMatchesCat = selectedCategory === 'All' || selectedCategory === 'Geography & Exploration';
     const atlasMatchesQuery = !q ||
-        'atlas românia'.includes(q) ||
         'atlas romania'.includes(q) ||
-        'geografie'.includes(q) ||
-        'hartă'.includes(q) ||
-        'harta'.includes(q) ||
-        'județe'.includes(q);
+        'geography'.includes(q) ||
+        'map'.includes(q) ||
+        'counties'.includes(q);
 
     const showFeatured = atlasMatchesCat && atlasMatchesQuery;
     if (featuredWrapper) {
         featuredWrapper.classList.toggle('hidden', !showFeatured);
     }
 
-    // Filtrează experiențele secundare (02 - Atelierul Suspensiilor)
+    // Filter secondary experiences (02 — SpringWorks)
     const filtered = secondaryExperiences.filter(item => {
-        const catMatch = selectedCategory === 'Toate' || item.category === selectedCategory;
+        const catMatch = selectedCategory === 'All' || item.category === selectedCategory;
         const textMatch = !q ||
             item.title.toLowerCase().includes(q) ||
             item.category.toLowerCase().includes(q) ||
@@ -62,7 +60,7 @@ function renderCollection() {
                 <div class="pt-4 border-t border-hairline flex flex-wrap items-center justify-between gap-4">
                     ${item.url ? `
                         <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="launch-exp-link btn-calm btn-calm-primary px-5 py-2.5 text-xs uppercase tracking-[0.16em] font-medium inline-flex items-center gap-2">
-                            <span>Deschide experiența</span>
+                            <span>Open experience</span>
                             <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <line x1="7" y1="17" x2="17" y2="7"></line>
                                 <polyline points="7 7 17 7 17 17"></polyline>
@@ -71,7 +69,7 @@ function renderCollection() {
                         <span class="text-xs text-muted font-light">${item.displayUrl || ''}</span>
                     ` : `
                         <button type="button" class="open-detail-btn underline-slow text-xs uppercase tracking-[0.16em] text-ink hover:text-accent cursor-pointer">
-                            <span>Detalii</span>
+                            <span>Details</span>
                             <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
